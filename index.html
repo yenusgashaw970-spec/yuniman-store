@@ -1,0 +1,188 @@
+<!DOCTYPE html><html lang="am">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yuniman Store | ዩኒማን ስቶር</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7f5;
+      color: #17251d;
+    }
+    header {
+      background: #087443;
+      color: white;
+      padding: 18px 16px;
+    }
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .logo { font-size: 23px; font-weight: bold; }
+    button, .shop-button {
+      border: 0;
+      border-radius: 8px;
+      padding: 11px 14px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+    .language { background: white; color: #087443; }
+    .hero {
+      text-align: center;
+      padding: 42px 16px;
+      background: linear-gradient(135deg, #e1f5e8, #fff4d8);
+    }
+    .hero h1 { font-size: 30px; margin: 0 0 12px; }
+    .hero p { line-height: 1.7; }
+    .shop-button {
+      display: inline-block;
+      background: #f28c28;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    .section { padding: 24px 15px; max-width: 1100px; margin: auto; }
+    .section h2 { text-align: center; }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .category {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 8px;
+      text-align: center;
+      box-shadow: 0 2px 8px #0000000c;
+      font-weight: bold;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .product {
+      background: white;
+      border-radius: 12px;
+      padding: 16px 10px;
+      text-align: center;
+    }
+    .product-icon { font-size: 42px; }
+    .product p { color: #637067; font-size: 14px; }
+    .order {
+      display: block;
+      width: 100%;
+      background: #087443;
+      color: white;
+      margin-top: 10px;
+    }
+    .info {
+      background: white;
+      border-radius: 12px;
+      padding: 18px;
+      line-height: 1.9;
+    }
+    footer {
+      background: #17251d;
+      color: white;
+      padding: 24px 16px;
+      text-align: center;
+      line-height: 1.8;
+    }
+    @media (min-width: 700px) {
+      .hero h1 { font-size: 42px; }
+      .categories { grid-template-columns: repeat(4, 1fr); }
+      .products { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <div class="logo">🛍️ Yuniman Store</div>
+      <button class="language" onclick="toggleLanguage()">አማርኛ / EN</button>
+    </div>
+  </header>  <section class="hero">
+    <h1 id="welcome">እንኳን ወደ Yuniman Store በደህና መጡ!</h1>
+    <p id="intro">የሚፈልጉትን ምርት በአንድ ቦታ ያግኙ።</p>
+    <a class="shop-button" href="#products" id="shop">ምርቶችን ይመልከቱ</a>
+  </section>  <section class="section">
+    <h2 id="catTitle">የምርት ዓይነቶች</h2>
+    <div class="categories">
+      <div class="category">📱 <span data-am="ስልኮች" data-en="Phones">ስልኮች</span></div>
+      <div class="category">👕 <span data-am="ልብሶች" data-en="Clothing">ልብሶች</span></div>
+      <div class="category">🏠 <span data-am="የቤት ዕቃዎች" data-en="Home Goods">የቤት ዕቃዎች</span></div>
+      <div class="category">🧴 <span data-am="የውበት ዕቃዎች" data-en="Beauty">የውበት ዕቃዎች</span></div>
+    </div>
+  </section>  <section class="section" id="products">
+    <h2 id="productTitle">ታዋቂ ምርቶች</h2>
+    <div class="products">
+      <div class="product">
+        <div class="product-icon">📱</div>
+        <h3 data-am="ስማርት ስልክ" data-en="Smartphone">ስማርት ስልክ</h3>
+        <p id="sample1">ዋጋ ከአስተዳዳሪ ይጠይቁ</p>
+      </div>
+      <div class="product">
+        <div class="product-icon">👟</div>
+        <h3 data-am="ጫማ" data-en="Shoes">ጫማ</h3>
+        <p id="sample2">ዋጋ ከአስተዳዳሪ ይጠይቁ</p>
+      </div>
+      <div class="product">
+        <div class="product-icon">🎒</div>
+        <h3 data-am="ቦርሳ" data-en="Bag">ቦርሳ</h3>
+        <p id="sample3">ዋጋ ከአስተዳዳሪ ይጠይቁ</p>
+      </div>
+      <div class="product">
+        <div class="product-icon">🎧</div>
+        <h3 data-am="የድምፅ መሣሪያ" data-en="Headphones">የድምፅ መሣሪያ</h3>
+        <p id="sample4">ዋጋ ከአስተዳዳሪ ይጠይቁ</p>
+      </div>
+    </div>
+  </section>  <section class="section">
+    <h2 id="deliveryTitle">ክፍያና መላኪያ</h2>
+    <div class="info">
+      <div id="payments">💵 በርክክብ ጊዜ ክፍያ (Cash on Delivery)</div>
+      <div>📲 Telebirr</div>
+      <div id="bank">🏦 የባንክ ዝውውር (Bank Transfer)</div>
+      <div id="delivery">🚚 ወደ ቤት ማድረስ ወይም ከመደብር መውሰድ</div>
+    </div>
+  </section>  <footer>
+    <strong>Yuniman Store</strong>
+    <div id="footerText">ጥራት፣ አገልግሎትና እምነት በአንድ ቦታ።</div>
+    <small>© <span id="year"></span> Yuniman Store</small>
+  </footer>  <script>
+    let english = false;
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    function toggleLanguage() {
+      english = !english;
+      document.documentElement.lang = english ? 'en' : 'am';
+      document.getElementById('welcome').textContent = english
+        ? 'Welcome to Yuniman Store!'
+        : 'እንኳን ወደ Yuniman Store በደህና መጡ!';
+      document.getElementById('intro').textContent = english
+        ? 'Find the products you need in one place.'
+        : 'የሚፈልጉትን ምርት በአንድ ቦታ ያግኙ።';
+      document.getElementById('shop').textContent = english ? 'Browse Products' : 'ምርቶችን ይመልከቱ';
+      document.getElementById('catTitle').textContent = english ? 'Categories' : 'የምርት ዓይነቶች';
+      document.getElementById('productTitle').textContent = english ? 'Featured Products' : 'ታዋቂ ምርቶች';
+      document.getElementById('deliveryTitle').textContent = english ? 'Payments & Delivery' : 'ክፍያና መላኪያ';
+      document.getElementById('payments').textContent = english ? '💵 Cash on Delivery' : '💵 በርክክብ ጊዜ ክፍያ (Cash on Delivery)';
+      document.getElementById('bank').textContent = english ? '🏦 Bank Transfer' : '🏦 የባንክ ዝውውር (Bank Transfer)';
+      document.getElementById('delivery').textContent = english ? '🚚 Home Delivery or Store Pickup' : '🚚 ወደ ቤት ማድረስ ወይም ከመደብር መውሰድ';
+      document.getElementById('footerText').textContent = english ? 'Quality, service and trust in one place.' : 'ጥራት፣ አገልግሎትና እምነት በአንድ ቦታ።';
+      document.querySelectorAll('[data-am]').forEach(el => {
+        el.textContent = english ? el.dataset.en : el.dataset.am;
+      });
+      ['sample1','sample2','sample3','sample4'].forEach(id => {
+        document.getElementById(id).textContent = english ? 'Ask for price' : 'ዋጋ ከአስተዳዳሪ ይጠይቁ';
+      });
+    }
+  </script></body>
+  </html>
