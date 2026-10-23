@@ -206,8 +206,7 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
     <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
-import {
-  getFirestore,
+import { getFirestore,
   collection,
   getDocs
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
@@ -221,7 +220,6 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-
 async function loadProducts() {
   const productsSection = document.getElementById("products");
   if (!productsSection) return;
@@ -240,10 +238,8 @@ async function loadProducts() {
   }
   status.textContent = "ምርቶች በመጫን ላይ... / Loading products...";
   grid.innerHTML = "";
-
   try {
     const snapshot = await getDocs(collection(db, "products"));
-
     if (snapshot.empty) {
       status.textContent = "ምርት አልተገኘም። / No products found.";
       return;
@@ -275,7 +271,6 @@ async function loadProducts() {
       "ምርቶችን መጫን አልተቻለም። / Could not load products.";
   }
 }
-
 loadProducts();
 </script>
 </body>
