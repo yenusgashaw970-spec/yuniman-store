@@ -211,9 +211,21 @@ const analytics = getAnalytics(app);
   try {
     const snapshot = await getDocs(collection(db, "products"));
 
-    snapshot.forEach((doc) => {
-      console.log(doc.id, doc.data());
-    });
+    const productsDiv = document.getElementById("products");
+productsDiv.innerHTML = "<h2>Our Products / ምርቶቻችን</h2>";
+
+if (snapshot.empty) {
+productsDiv.innerHTML += "<p>No products found / ምርት አልተገኘም።</p>";
+}
+
+snapshot.forEach((doc) => {
+const product = doc.data();
+
+const item = document.createElement("div");
+item.innerHTML = "<h3>${product.name || "Unnamed Product"}</h3> <p>Price: ${product.price ?? "N/A"}</p> <p>Category: ${product.category || "Other"}</p>";
+
+productsDiv.appendChild(item);
+});
   } catch (error) {
     console.error("Products loading error:", error);
   }
