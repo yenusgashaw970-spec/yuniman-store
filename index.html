@@ -204,35 +204,93 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
 const analytics = getAnalytics(app);
-    async function loadProducts() {
+    <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCsC8a7mMaEB1WZt4A4ru5HPXUkP_PUcos",
+  authDomain: "yuniman-store.firebaseapp.com",
+  projectId: "yuniman-store",
+  storageBucket: "yuniman-store.firebasestorage.app",
+  messagingSenderId: "781991448314",
+  appId: "1:781991448314:web:ce17c6408889dac3758343"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+async function loadProducts() {
+  const productsSection = document.getElementById("products");
+  if (!productsSection) return;
+
+  let grid = document.getElementById("productGrid");
+
+  if (!grid) {
+    grid = document.createElement("div");
+    grid.id = "productGrid";
+    grid.className = "products";
+    productsSection.appendChild(grid);
+  }
+
+  let status = document.getElementById("productStatus");
+
+  if (!status) {
+    status = document.createElement("p");
+    status.id = "productStatus";
+    productsSection.appendChild(status);
+  }
+
+  status.textContent = "ምርቶች በመጫን ላይ... / Loading products...";
+  grid.innerHTML = "";
+
   try {
     const snapshot = await getDocs(collection(db, "products"));
-    const productsDiv = document.getElementById("products");
-productsDiv.innerHTML = "<h2>Our Products / ምርቶቻችን</h2>";
-if (snapshot.empty) {
-productsDiv.innerHTML += "<p>No products found / ምርት አልተገኘም።</p>";   }
-snapshot.forEach((doc) => {
-  const product = doc.data();
-  const item = document.createElement("div");
-  item.innerHTML = `
-    <h3>${product.name || "Unnamed Product"}</h3>
-    <p>Price: ${product.price ?? "N/A"}</p>
-    <p>Category: ${product.category || "Other"}</p>
-  `;
-  productsDiv.appendChild(item);
-});   
-   catch (error) {
-    console.error("Products loading error:", error);
-  }
+
+    if (snapshot.empty) {
+      status.textContent = "ምርት አልተገኘም። / No products found.";
+      return;
     }
-    </section>
-<div id="products">
-  <h2>Our Products / ምርቶቻችን</h2>
-  <p>Products are loading...</p>
-</div>
-<footer>    
- loadProducts();
+
+    snapshot.forEach((documentSnapshot) => {
+      const product = documentSnapshot.data();
+
+      const card = document.createElement("div");
+      card.className = "product";
+
+      const name = document.createElement("h3");
+      name.textContent = product.name || "Unnamed Product";
+
+      const price = document.createElement("p");
+      price.textContent =
+        "ዋጋ / Price: " +
+        (product.price ?? "N/A") +
+        " ብር";
+
+      const category = document.createElement("p");
+      category.textContent =
+        "ዓይነት / Category: " +
+        (product.category || "Other");
+
+      card.appendChild(name);
+      card.appendChild(price);
+      card.appendChild(category);
+      grid.appendChild(card);
+    });
+
+    status.textContent = "";
+  } catch (error) {
+    console.error("Products loading error:", error);
+    status.textContent =
+      "ምርቶችን መጫን አልተቻለም። / Could not load products.";
+  }
+}
+
+loadProducts();
 </script>
 </body>
 </html>
-
