@@ -156,7 +156,7 @@
     <strong>Yuniman Store</strong>
     <div id="footerText">ጥራት፣ አገልግሎትና እምነት በአንድ ቦታ።</div>
     <small>© <span id="year"></span> Yuniman Store</small>
-  </footer>  <script type="module"> t>
+  </footer> <script type="module">
     let english = false;
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -234,13 +234,15 @@ snapshot.forEach((doc) => {
    catch (error) {
     console.error("Products loading error:", error);
   }
-}
-
-loadProducts();
-    <div id="products">
+    }
+    </section>
+<div id="products">
   <h2>Our Products / ምርቶቻችን</h2>
   <p>Products are loading...</p>
 </div>
-  </script>
+<footer>    
+ loadProducts();
+</script>
 </body>
-  </html>
+</html>
+
