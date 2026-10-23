@@ -219,14 +219,19 @@ productsDiv.innerHTML += "<p>No products found / ምርት አልተገኘም።
 }
 
 snapshot.forEach((doc) => {
-const product = doc.data();
+  const product = doc.data();
 
-const item = document.createElement("div");
-item.innerHTML = "<h3>${product.name || "Unnamed Product"}</h3> <p>Price: ${product.price ?? "N/A"}</p> <p>Category: ${product.category || "Other"}</p>";
+  const item = document.createElement("div");
 
-productsDiv.appendChild(item);
-});
-  } catch (error) {
+  item.innerHTML = `
+    <h3>${product.name || "Unnamed Product"}</h3>
+    <p>Price: ${product.price ?? "N/A"}</p>
+    <p>Category: ${product.category || "Other"}</p>
+  `;
+
+  productsDiv.appendChild(item);
+});   
+   catch (error) {
     console.error("Products loading error:", error);
   }
 }
