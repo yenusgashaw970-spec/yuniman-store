@@ -211,7 +211,6 @@ import {
   collection,
   getDocs
 } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
-
 const firebaseConfig = {
   apiKey: "AIzaSyCsC8a7mMaEB1WZt4A4ru5HPXUkP_PUcos",
   authDomain: "yuniman-store.firebaseapp.com",
@@ -220,31 +219,25 @@ const firebaseConfig = {
   messagingSenderId: "781991448314",
   appId: "1:781991448314:web:ce17c6408889dac3758343"
 };
-
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 async function loadProducts() {
   const productsSection = document.getElementById("products");
   if (!productsSection) return;
-
   let grid = document.getElementById("productGrid");
-
   if (!grid) {
     grid = document.createElement("div");
     grid.id = "productGrid";
     grid.className = "products";
     productsSection.appendChild(grid);
   }
-
   let status = document.getElementById("productStatus");
-
   if (!status) {
     status = document.createElement("p");
     status.id = "productStatus";
     productsSection.appendChild(status);
   }
-
   status.textContent = "ምርቶች በመጫን ላይ... / Loading products...";
   grid.innerHTML = "";
 
@@ -255,33 +248,26 @@ async function loadProducts() {
       status.textContent = "ምርት አልተገኘም። / No products found.";
       return;
     }
-
     snapshot.forEach((documentSnapshot) => {
       const product = documentSnapshot.data();
-
       const card = document.createElement("div");
       card.className = "product";
-
       const name = document.createElement("h3");
       name.textContent = product.name || "Unnamed Product";
-
       const price = document.createElement("p");
       price.textContent =
         "ዋጋ / Price: " +
         (product.price ?? "N/A") +
         " ብር";
-
       const category = document.createElement("p");
       category.textContent =
         "ዓይነት / Category: " +
         (product.category || "Other");
-
       card.appendChild(name);
       card.appendChild(price);
       card.appendChild(category);
       grid.appendChild(card);
     });
-
     status.textContent = "";
   } catch (error) {
     console.error("Products loading error:", error);
